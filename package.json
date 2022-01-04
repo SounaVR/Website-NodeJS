@@ -1,0 +1,19 @@
+{
+  "name": "website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app.js"
+  },
+  "author": "Souna",
+  "license": "MIT",
+  "dependencies": {
+    "@notionhq/client": "^0.3.2",
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "http": "^0.0.1-security",
+    "moment": "^2.29.1"
+  }
+}
