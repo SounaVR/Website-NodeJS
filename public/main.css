@@ -1,0 +1,21 @@
+body {
+    padding-top: 100px;
+    text-decoration: none;
+    word-wrap: break-word;
+}
+
+div#cadre {
+    display: flex;
+    justify-content: center;
+    border: solid;
+    text-align: center;
+}
+
+a#padding {
+    margin-bottom: 10%;
+    margin-top: 10%;
+}
+
+div#header {
+    margin-bottom: 5%;
+}
