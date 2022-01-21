@@ -1,26 +1,49 @@
 // Imports
 require('dotenv').config();
-const http     = require('http');
-const express  = require('express');
+const http          = require('http');
+const express       = require('express');
+const session       = require('express-session');
+const mongoose      = require('mongoose');
+const passport      = require('passport');
+
+const flash         = require('connect-flash');
+const cookieParser  = require('cookie-parser');
+const bodyParser    = require('body-parser');
 
 // Instantiate the server
 const app = express();
+require('./config/passport')(passport);
 
-// URL encoding
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-
-// Assets and styles requirements
-app.use('/styles', express.static('./styles/'));
-app.use('/images', express.static('/images/'));
-
-// EJS
-app.set('views', './views');
-app.set('view engine', 'ejs');
-
-app.get(/^\/$/, async (req, res) => {;
-    res.render('index');
+// Database
+mongoose.connect(process.env.MONGO_PASS, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
 });
+
+
+// Middleware
+app.use(express.static(__dirname + '/images'));
+app.use(express.static(__dirname + '/public'));
+
+app.use(session({
+    secret: process.env.EXPRESS_SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true
+}));
+
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(cookieParser());
+app.use(bodyParser.json());
+
+// Passport.js
+app.set('view engine', 'ejs');
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
+// Routes
+require('./app/routes.js')(app, passport);
 
 // Listen http
 http.createServer(app).listen(80, () => {
