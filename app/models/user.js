@@ -2,6 +2,7 @@ const { Schema, model } = require("mongoose");
 const bcrypt = require('bcrypt');
 
 const userSchema = new Schema({
+    admin: Boolean,
     local: {
         email: String,
         password: String,

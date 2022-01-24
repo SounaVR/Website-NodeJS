@@ -6,6 +6,13 @@ module.exports = function(app, passport) {
         });
     });
 
+    // Admin page
+    app.get('/admin', isAdmin, function(req, res) {
+        res.render('admin.ejs', {
+            user: req.user
+        });
+    });
+
     // Login page
     app.get('/login', function(req, res) {
         res.render('login.ejs', { message: req.flash('loginMessage') });
@@ -149,4 +156,11 @@ function isLoggedIn(req, res, next) {
 function isLoggedOut(req, res, next) {
     if (!req.isAuthenticated()) return next();
     res.redirect('/');
+}
+
+function isAdmin(req, res, next) {
+    if (req.isAuthenticated() && (req.user.admin === true)) {
+        return next();
+    }
+    return res.redirect('/');
 }
