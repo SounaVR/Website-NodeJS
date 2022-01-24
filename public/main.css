@@ -2,18 +2,24 @@ body {
     padding-top: 100px;
     text-decoration: none;
     word-wrap: break-word;
+    display: flex;
+}
+
+div.row {
+    display: flex;
+    padding: 20px;
 }
 
 div#cadre {
-    display: flex;
-    justify-content: center;
     border: solid;
-    text-align: center;
-}
-
-a#padding {
-    margin-bottom: 10%;
-    margin-top: 10%;
+    text-align: start;
+    display: inline-block;
+    
+    position: relative;
+    padding: 30px;
+    border-radius: 20px;
+    justify-content: space-between;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
 }
 
 div#header {
