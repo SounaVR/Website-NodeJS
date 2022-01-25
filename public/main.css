@@ -25,3 +25,7 @@ div#cadre {
 div#header {
     margin-bottom: 5%;
 }
+
+div#input {
+    margin: auto;
+}
