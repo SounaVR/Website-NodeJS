@@ -43,6 +43,48 @@ module.exports = function(app, passport) {
             user: req.user
         });
     });
+    
+    // Change password page
+    app.get('/changepw', isLoggedIn, function(req, res) {
+        res.render('changepw.ejs', {
+            message: req.flash('changePassword'),
+            user: req.user
+        });
+    });
+
+    // New password handlere
+    app.post('/pw', isLoggedIn, function(req, res) {
+        const User = require('./models/user'); // Get mongo functions
+        const user = req.user;
+        var uwu = true; // Boolean
+        if (req.body.email === user.local.email) { // Check if the typed email = actual user email
+            if (user.validPassword(req.body.oldPassword)) { // Check with bcrypt if the old = the actual one
+                if (req.body.newPassword === req.body.confirmNewPassword) { // Check new = confirm
+                    User.findOne({ 'local.email' :  req.body.email }, (err, user) => { // Select the user in the DB
+                        user.local.password = user.generateHash(req.body.newPassword); // Hash the new password
+
+                        user.save((err) => { // Save the user
+                            if (err) throw err;
+                        });
+                        uwu = true; // Set the boolean to true (for the redirect)
+                    });
+                } else {
+                    req.flash('changePassword', 'The confirmation is different.');
+                    uwu = false;
+                }
+            } else {
+                req.flash('changePassword', 'The provided password doesn\'t match with your actual.');
+                uwu = false;
+            }
+        } else {
+            req.flash('changePassword', 'It\'s not your email.');
+            uwu = false;
+        }
+
+        if (uwu) {
+            res.redirect('/profile');
+        } else res.redirect('/changepw');
+    });
 
     // Logout
     app.get('/logout', async function(req, res) {
