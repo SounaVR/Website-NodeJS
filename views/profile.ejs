@@ -30,7 +30,8 @@
                         <% if (user.local.email) { %>
                             <p>
                                 <strong>email</strong>: <%= user.local.email %><br>
-                                <strong>password</strong>: <%= user.local.password %>
+                                <!-- <strong>password</strong>: <%= //user.local.password %> -->
+                                <p>Change password ? <a href="/changepw"> Click here</a></p>
                             </p>
                         <% } else { %>
                             <a href="/login" class="btn btn-info" id="padding">Connect Local</a>
