@@ -1,3 +1,4 @@
+const { passwordStrength } = require('check-password-strength');
 const LocalStrategy = require('passport-local').Strategy;
 const DiscordStrategy = require('passport-discord').Strategy;
 const GitHubStrategy = require('passport-github2').Strategy;
@@ -29,8 +30,11 @@ module.exports = (passport) => {
                     if (err) return done(err);
     
                     if (user) {
-                        return done(null, false, req.flash('signupMessage', 'That email is already taken.'))
+                        return done(null, false, req.flash('signupMessage', 'That email is already taken.'));
                     } else {
+                        if (passwordStrength(password).id < 2) {
+                            return done(null, false, req.flash('signupMessage', 'Your password is too weak.'), req.flash('email', email), req.flash('password', password));
+                        }
                         const newUser = new User();
     
                         newUser.local.email = email;
