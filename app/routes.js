@@ -27,7 +27,12 @@ module.exports = function(app, passport) {
 
     // Signup page
     app.get('/signup', function(req, res) {
-        res.render('signup.ejs', { message: req.flash('signupMessage') });
+        res.render('signup.ejs', {
+            message: req.flash('signupMessage'),
+            // Keep the credentials in the form if there any errors (we don't need to rewrite our mail and password 😏)
+            form_email: req.flash('email'),
+            form_password: req.flash('password')
+        });
     });
 
     // Process the signup form
@@ -200,6 +205,7 @@ function isLoggedOut(req, res, next) {
     res.redirect('/');
 }
 
+// Make sure the user is admin
 function isAdmin(req, res, next) {
     if (req.isAuthenticated() && (req.user.admin === true)) {
         return next();
