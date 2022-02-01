@@ -3,6 +3,16 @@ body {
     text-decoration: none;
     word-wrap: break-word;
     display: flex;
+    background-color: rgb(59, 59, 59);
+    color: white;
+}
+
+a.btn {
+    color: white;
+}
+
+label {
+    color: black;
 }
 
 div.row {
