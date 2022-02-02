@@ -33,7 +33,7 @@
         </symbol>
     </svg>
 
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="/node/main.css">
 </head>
     <body>
         <div class="container">
@@ -41,15 +41,15 @@
                 <h1><span class="fa fa-lock"></span> Node Authentication</h1>
                 <p>Login or Register with:</p>
                 
-                <a href="/login" class="btn btn-default"><span class="fa fa-user"></span> Local Login</a>
-                <a href="/signup" class="btn btn-default"><span class="fa fa-user"></span> Local Signup</a>
-                <a href="/auth/google" class="btn btn-danger"><i class="fab fa-google"></i> Google</a>
-                <a href="/auth/discord" class="btn btn-primary"><i class="fab fa-discord"></i> Discord</a>
-                <a href="/auth/github" class="btn btn-dark"><i class="fab fa-github"></i> GitHub</a>
+                <a href="/node/login" class="btn btn-default"><span class="fa fa-user"></span> Local Login</a>
+                <a href="/node/signup" class="btn btn-default"><span class="fa fa-user"></span> Local Signup</a>
+                <a href="/node/auth/google" class="btn btn-danger"><i class="fab fa-google"></i> Google</a>
+                <a href="/node/auth/discord" class="btn btn-primary"><i class="fab fa-discord"></i> Discord</a>
+                <a href="/node/auth/github" class="btn btn-dark"><i class="fab fa-github"></i> GitHub</a>
 
                 <!-- if the user exists, display a profile button -->
                 <% if (user) { %>
-                    <a href="/profile" class="btn btn-primary"><i class="fas fa-user-circle"></i> Profile</a>
+                    <a href="//profile" class="btn btn-primary"><i class="fas fa-user-circle"></i> Profile</a>
                 <% } %>
             </div>
         </div>

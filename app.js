@@ -21,8 +21,8 @@ mongoose.connect(process.env.MONGO_PASS, {
 });
 
 // Middleware
-app.use(express.static(__dirname + '/images'));
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '//images'));
+app.use(express.static(__dirname + '//public'));
 
 app.use(session({
     secret: process.env.EXPRESS_SESSION_SECRET,
@@ -45,6 +45,6 @@ app.use(flash());
 require('./app/routes.js')(app, passport);
 
 // Listen http
-http.createServer(app).listen(80, () => {
-    console.log('Server listening on port 80 !');
+http.createServer(app).listen(8080, () => {
+    console.log('Server listening on port 8080 !');
 });

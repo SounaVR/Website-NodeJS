@@ -9,16 +9,16 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         <script src="https://kit.fontawesome.com/c08589246e.js" crossorigin="anonymous"></script>
 
-        <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="/node/main.css">
     </head>
     <body>
         <div class="container">
             <!-- HEADER -->
             <div class="page-header text-center" id="header">
                 <h1><i class="fas fa-user-circle"></i></span> Profile Page</h1>
-                <a href="/logout" class="btn btn-success btn-lg">Logout</a>
+                <a href="/node/logout" class="btn btn-success btn-lg">Logout</a>
                 <% if (user.admin) { %>
-                    <a href="/admin" class="btn btn-success btn-lg">Admin panel</a>
+                    <a href="/node/admin" class="btn btn-success btn-lg">Admin panel</a>
                 <% } %>
             </div>
             <div class="row">
@@ -31,10 +31,10 @@
                             <p>
                                 <strong>email</strong>: <%= user.local.email %><br>
                                 <!-- <strong>password</strong>: <%= //user.local.password %> -->
-                                <p>Change password ? <a href="/changepw"> Click here</a></p>
+                                <p>Change password ? <a href="/node/changepw"> Click here</a></p>
                             </p>
                         <% } else { %>
-                            <a href="/login" class="btn btn-info" id="padding">Connect Local</a>
+                            <a href="/node/login" class="btn btn-info" id="padding">Connect Local</a>
                         <% } %>
                     </div>
                 </div>
@@ -51,9 +51,9 @@
                                 <strong>name</strong>: <%= user.google.name %>
                             </p>
 
-                            <a href="/unlink/google" class="btn btn-danger" id="padding">Unlink</a>
+                            <a href="/node/unlink/google" class="btn btn-danger" id="padding">Unlink</a>
                         <% } else { %>
-                            <a href="/connect/google" class="btn btn-danger" id="padding">Connect Google</a>
+                            <a href="/node/connect/google" class="btn btn-danger" id="padding">Connect Google</a>
                         <% } %>
                     </div>
                 </div>
@@ -70,9 +70,9 @@
                                 <strong>username</strong>: <%= user.discord.username %><br>
                             </p>
 
-                            <a href="/unlink/discord" class="btn btn-primary" id="padding">Unlink</a>
+                            <a href="/node/unlink/discord" class="btn btn-primary" id="padding">Unlink</a>
                         <% } else { %>
-                            <a href="/connect/discord" class="btn btn-primary" id="padding">Connect Discord</a>
+                            <a href="/node/connect/discord" class="btn btn-primary" id="padding">Connect Discord</a>
                         <% } %>
                     </div>
                 </div>
@@ -88,9 +88,9 @@
                                 <strong>username</strong>: <%= user.github.username %><br>
                             </p>
 
-                            <a href="/unlink/github" class="btn btn-dark" id="padding">Unlink</a>
+                            <a href="/node/unlink/github" class="btn btn-dark" id="padding">Unlink</a>
                         <% } else { %>
-                            <a href="/connect/github" class="btn btn-dark" id="padding">Connect GitHub</a>
+                            <a href="/node/connect/github" class="btn btn-dark" id="padding">Connect GitHub</a>
                         <% } %>
                     </div>
                 </div>

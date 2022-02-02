@@ -79,7 +79,7 @@ module.exports = (passport) => {
     passport.use(new GoogleStrategy({
         clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL: 'https://souna.xyz/auth/google/callback',
+        callbackURL: 'https://souna.xyz/node/auth/google/callback',
         passReqToCallback: true
     }, function(req, token, refreshToken, profile, done) {
         process.nextTick(() => {
@@ -133,7 +133,7 @@ module.exports = (passport) => {
     passport.use(new DiscordStrategy({
         clientID: process.env.DISCORD_CLIENT_ID,
         clientSecret: process.env.DISCORD_CLIENT_SECRET,
-        callbackURL: 'https://souna.xyz/auth/discord/callback',
+        callbackURL: 'https://souna.xyz/node/auth/discord/callback',
         passReqToCallback: true,
         scope: scopes
     }, function(req, accessToken, refreshToken, profile, done) {
@@ -186,7 +186,7 @@ module.exports = (passport) => {
     passport.use(new GitHubStrategy({
         clientID: process.env.GITHUB_CLIENT_ID,
         clientSecret: process.env.GITHUB_CLIENT_SECRET,
-        callbackURL: 'https://souna.xyz/auth/github/callback',
+        callbackURL: 'https://souna.xyz/node/auth/github/callback',
         passReqToCallback: true
     }, function(req, token, refreshToken, profile, cb) {
         process.nextTick(() => {
