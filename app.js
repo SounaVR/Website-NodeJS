@@ -10,6 +10,8 @@ const flash         = require('connect-flash');
 const cookieParser  = require('cookie-parser');
 const bodyParser    = require('body-parser');
 
+const { bodyParserErrorHandler } = require('./app/middleware.js');
+
 // Instantiate the server
 const app = express();
 require('./config/passport')(passport);
@@ -31,9 +33,9 @@ app.use(session({
 }));
 
 app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
-app.use(cookieParser());
 app.use(bodyParser.json());
+app.use(bodyParserErrorHandler());
+app.use(cookieParser());
 
 // Passport.js
 app.set('view engine', 'ejs');
